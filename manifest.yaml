@@ -1,0 +1,36 @@
+display_information:
+  name: LGTM Worktime Bot
+  description: 출퇴근, 시간대별 업무 로그, 일일 스크럼을 관리합니다.
+  background_color: "#2c2d30"
+features:
+  bot_user:
+    display_name: LGTM Worktime
+    always_online: true
+  slash_commands:
+    - command: /worktime
+      description: 출근/휴식/퇴근/기록/잔디
+      usage_hint: "출근 | 휴식 | 퇴근 | 기록 [@사용자] [YYYY-MM-DD] | 잔디 [@사용자] [YYYY-MM]"
+      should_escape: false
+    - command: /setlog
+      description: 현재 시간대 업무 내용을 기록합니다.
+      usage_hint: "지금 하고 있는 일"
+      should_escape: false
+    - command: /today
+      description: 오늘 시간대별 업무 로그와 근무시간을 봅니다.
+      usage_hint: "[@사용자]"
+      should_escape: false
+    - command: /scrum
+      description: 오늘 일일 업무보고를 작성하고 공유합니다.
+      should_escape: false
+oauth_config:
+  scopes:
+    bot:
+      - commands
+      - chat:write
+      - users:read
+settings:
+  interactivity:
+    is_enabled: true
+  org_deploy_enabled: false
+  socket_mode_enabled: true
+  token_rotation_enabled: false
