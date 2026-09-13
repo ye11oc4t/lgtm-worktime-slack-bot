@@ -1,0 +1,4 @@
+slack-bolt==1.21.2
+slack-sdk==3.33.5
+asyncpg==0.30.0
+tzdata>=2025.2
