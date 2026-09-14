@@ -361,8 +361,9 @@ async def scrum_command(ack, command, client):
 async def scrum_modal_submission(ack, body, view, client):
     metadata = json.loads(view["private_metadata"])
     values = view["state"]["values"]
+    # Slack sends null for empty optional inputs, including cleared text fields.
     report = {
-        key: values[key]["value"].get("value", "").strip()
+        key: (values[key]["value"].get("value") or "").strip()
         for key in ("module", "completed", "in_progress", "next_tasks", "blockers_notes")
     }
     issues = find_scrum_safety_issues(scrum_values(report))
